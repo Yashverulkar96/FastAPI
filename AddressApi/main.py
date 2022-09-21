@@ -20,18 +20,18 @@ def get_db():
         db.close()
 
 #get all Addresses
-# @app.get("/")
-# def list_Address(db:Session = Depends(get_db)):
-#     Address_list = crud.list_Address(db=db)
-#     return Address_list
+@app.get("/")
+def list_Address(db:Session = Depends(get_db)):
+    Address_list = crud.list_Address(db=db)
+    return Address_list
 
 #get by id
-@app.get("/{id}") #id is a path parameter
-def get_Address(id:int, db:Session = Depends(get_db)):
-    data = crud.get_Address(db=db, id=id)
-    return data
+# @app.get("/{id}") #id is a path parameter
+# def get_Address(id:int, db:Session = Depends(get_db)):
+#     data = crud.get_Address(db=db, id=id)
+#     return data
 
-@app.get("/")
+@app.get("/custom")
 def get_custom_address(distance:int,lat:float, lng:float, db:Session = Depends(get_db)):
     lat = radians(lat)
     lng = radians(lng)
